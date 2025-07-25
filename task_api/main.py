@@ -1,11 +1,20 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import Optional
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 tasks = []
 id = 1
-
-app = FastAPI()
 
 class TaskIn(BaseModel):
     title: str
@@ -34,7 +43,7 @@ async def create_task(task: TaskIn):
         "description" : task.description,
         "completed" : False
     }
-    tasks.add(new_task)
+    tasks.append(new_task)
     id += 1
     return new_task
 

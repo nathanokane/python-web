@@ -1,0 +1,21 @@
+# Python venv
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# VSCode
+.vscode/
+
+# Node.js
+my-app/node_modules/
+my-app/dist/
+my-app/.vite/
+
+# Logs
+*.log
+
+# System
+.DS_Store
+Thumbs.db
